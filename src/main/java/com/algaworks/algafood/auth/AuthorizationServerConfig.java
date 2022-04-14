@@ -32,10 +32,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.inMemory()
 				.withClient("algafood-web")
 				.secret(passwordEncoder.encode("web123"))
-				.authorizedGrantTypes("password", "refresh_token")
+				.authorizedGrantTypes("password", "refresh_token", "client")
 				.scopes("write", "read")
 //				.accessTokenValiditySeconds(60 * 60 * 6) // 6 horas (padrão é 12 horas);
 				.refreshTokenValiditySeconds(60 * 24 * 60 * 60) //60 dias
+			
+			.and()
+				.withClient("faturamento")
+				.secret(passwordEncoder.encode("faturamento123"))
+				.authorizedGrantTypes("client_credentials")
+				.scopes("write", "read")
+			
 			.and()
 				//usado um id e senha para o resource server (só para diferenciar do client)
 				.withClient("checktoken")
