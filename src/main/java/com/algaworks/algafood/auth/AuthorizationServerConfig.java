@@ -83,7 +83,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 //		security.checkTokenAccess("isAuthenticated()");
 		security.checkTokenAccess("permitAll()") //nao precisa autenticacao do client
-		.allowFormAuthenticationForClients(); //permite enviar o client_id pelo form (util para o PKCE)
+			.tokenKeyAccess("permitAll()")
+			.allowFormAuthenticationForClients(); //permite enviar o client_id pelo form (util para o PKCE)
 	}
 	
 	//para o password flow
