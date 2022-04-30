@@ -47,7 +47,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.withClient("algafood-web")
 				.secret(passwordEncoder.encode("web123"))
 				.authorizedGrantTypes("password", "refresh_token", "client")
-				.scopes("write", "read")
+				.scopes("WRITE", "READ")
 //				.accessTokenValiditySeconds(60 * 60 * 6) // 6 horas (padrão é 12 horas);
 				.refreshTokenValiditySeconds(60 * 24 * 60 * 60) //60 dias
 				
@@ -56,20 +56,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //				.secret(passwordEncoder.encode("food123"))
 				.secret(passwordEncoder.encode(""))
 				.authorizedGrantTypes("authorization_code")
-				.scopes("write", "read")
+				.scopes("WRITE", "READ")
 				.redirectUris("http://localhost:8000")
 			
 			.and()
 				.withClient("webadmin")
 				.authorizedGrantTypes("implicit")
-				.scopes("write", "read")
+				.scopes("WRITE", "READ")
 				.redirectUris("http://aplicacao-cliente")
 				
 			.and()
 				.withClient("faturamento")
 				.secret(passwordEncoder.encode("faturamento123"))
 				.authorizedGrantTypes("client_credentials")
-				.scopes("write", "read")
+				.scopes("WRITE", "READ")
 			
 			.and()
 				//usado um id e senha para o resource server (só para diferenciar do client)
